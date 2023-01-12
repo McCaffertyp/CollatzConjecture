@@ -1,0 +1,92 @@
+Paul McCafferty
+1/11/2023
+v1.0
+
+Crandall Conjecture problem is a graphing problem.
+This problem analyzes a pattern based off only positive integers.
+For odd, positive integers: 3 * x + 1 (Written as 3x + 1 for the docs), and for even, positive integers: x / 2.
+The premise is that all graphs following this pattern eventually come back to 1.
+
+
+Preface (some definitions):
+1) We will refer to the calculation for odd, positive integers as EQO, where EQO = 3 * x + 1.
+2) We will refer to the calculation for even, positive integers as EQE, where EQE = x / 2.
+3) We will refer to a positive, odd integer (N >= 1 && N % 2 == 1) as POI.
+4) We will refer to a positive, even integer (N >= 2 && N % 2 == 0) as PEI.
+
+
+Base Theorems (questionably):
+A) We know that any odd number multiplied by an odd number will be odd (link proof - https://www.splashlearn.com/math-vocabulary/number-sense/even-and-odd-numbers).
+B) We know that any even number divided by 2 may be either even or odd, as we are strictly working with integers.
+C) Based on (A), we know that anytime we get a POI, the result will be (B) (We _will_ do EQE).
+D) Based on (B), we know that anytime we get a PEI, the result may be either (A) or (B).
+E) If log(sub2)(n) is an integer, then n is a power of 2.
+
+
+A fundamental statement that could be made, that would be that due to the "recursive waterfall" nature we can
+observe above with conditions A-D, is the following:
+"Should the number be odd, we are guaranteed to do an even calculation (which decreases the number's value).
+Should the number be even, we are _not_ guaranteed to do an odd calculation (which increases the number's value)"
+
+C1) Looking at the following even numbers:
+2, 4, 6, 8, 10
+if we divide 2 by 2, we get 1 (odd), 4 / 2 = 2 (even), 6 / 2 = 3 (odd), 8 / 2 = 4 (even), 10 / 2 = 5 (odd).
+
+C2) Now let's add 10 to each:
+12, 14, 16, 18, 20
+if we divide 12 by 2, we get 6 (even), 14 / 2 = 7 (odd), 16 / 2 = 8 (even), 18 / 2 = 9 (odd), 20 / 2 = 10 (even).
+
+C3) Now add another 10 to each:
+22, 24, 26, 28, 30
+if we divide 22 by 2, we get 11 (odd), 24 / 2 = 12 (even), 26 / 2 = 13 (odd), 28 / 2 = 14 (even), 30 / 2 = 15 (odd).
+
+C4) What if we start dividing numbers that alternate every other for even/odd or all of one type?
+286, 412, 518, 734, 804
+if we divide 286 by 2, we get 143 (odd), 412 / 2 = 206 (even), 518 / 2 = 259 (odd), 734 / 2 = 367 (odd), 804 / 2 = 402 (even)
+
+From the above, even just from the 2-20 with a step of (2), we can observe a perfect 50-50 split of getting a POI
+or PEI when dividing by 2 (EQE). Furthering looking into this, that means that we're looking at a breakdown for every
+20 numbers, not a massive integer.
+
+For every 20 numbers, there are 10 odd numbers (1, 3, 5, 7, 9, 11, 13, 15, 17, 19) that will use EQO, and end up
+resulting in an even number (refer to (A) above). There are 10 even numbers (2, 4, 6, 8, 10, 12, 14, 16, 18, 20) that
+have a 50-50 for ending up an even or odd number (refer to (B) above).
+
+Using the 20 number grouping, let's look at group (C4) from above: 286, 412, 518, 734, 804.
+286 can be split into 200, 80 and 6. 200 is a 20 group, so we can ignore, 80 is a 20 group, so we can ignore, 6 / 2 = 3, which is odd.
+412 can be split into 400 and 12. 400 is a 20 group, so we can ignore. 12 / 2 = 6, which is even.
+518 can be split into 500 and 18. 500 is a 20 group, so we can ignore. 18 / 2 = 9, which is odd.
+734 can be split into 700, 20, and 14. 700 is a 20 group, so we can ignore, 20 is a 20 group, so we can ignore, 14 / 2 = 7, which is odd.
+804 can be split into 800 and 4. 800 is a 20 group, so we can ignore. 4 / 2 = 2, which is even.
+
+
+To summarize, for every 20 numbers (20-group, which will be referred to as 20G), there is a 50% chance that we get
+a POI, use the EQO and end up with an even number. With an even number, there is a 50% it will result in an even.
+If it results in an odd, we use EQO, but then are guaranteed to use EQE next for another 50-50 of an odd or even.
+
+
+Observation: Since we know every POI will result in a PEI, which we will use EQE on, we can make the following statement:
+All POI will have their two-step value result in the combination of EQO and EQE, thus EQO can have a sibling equation,
+which will henceforth be EQOA = (3 * x + 1) / 2. EQE shall remain the same of EQE = x / 2
+
+
+Observation: Since the current Crandall Conjecture always converges on 1, and that's gotten to by dividing by 2, we know
+that the previous number before 1 was 2 since 2 / 2 = 1. We also know that 3 * 1 + 1 = 4, which is a PEI and would have
+EQE performed on it. Due to this, we have the "4 Loop" which will be referred to as 4L. We can backtrack from
+1 to 2 to 4 to etc... These are all powers of 2. Thus, we are now also brought to the conclusion that once a power
+of 2 is hit in the equation process with EQO, we have met the condition to get into the 4L.
+Let us call this the "Power of 2 Fall" which will be referred to as P2F.
+
+Some odd numbers which lead to the P2F: 5, 21, 85
+
+
+
+Glossary:
+1) EQO = (3 * x + 1)
+2) EQOA = ((3 * x + 1) / 2)
+3) EQE = (x / 2)
+4) POI = (N >= 1 && N % 2 == 1)
+5) PEI = (N >= 2 && N % 2 == 0)
+6) 20G = ((N >= 1 && N <= 20) && N % 2 == 0)
+7) 4L = if (N == 4), we will end up in a 4, 2, 1, 4, 2, 1, etc. loop.
+8) P2F = if (2^N), we will end up in 4L.
