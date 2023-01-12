@@ -1,6 +1,6 @@
 Paul McCafferty
 1/11/2023
-v1.0
+v1.1
 
 Crandall Conjecture problem is a graphing problem.
 This problem analyzes a pattern based off only positive integers.
