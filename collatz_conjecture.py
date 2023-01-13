@@ -34,6 +34,7 @@ def cc_even_func(x: int) -> int:
 
 
 def cc_even_func_adjusted(x: int) -> int:
+    # This decreases the value x by minimum 50.00%, can be a maximum of 99.99%
     twenty_group = helpers.get_20g_num(x)
     if twenty_group in helpers.TWENTY_GROUP_EVENS:
         return cc_even_func_adjusted(cc_even_func(x))
@@ -115,8 +116,9 @@ def run():
     logger.d(TAG, "num = {0}".format(num))
     # num = 5592405
     plot_points_og = get_plot_points(num)
-    plot_points_adjusted = get_plot_points_adjusted(num)
-    plot_graph(plot_points_og, plot_points_adjusted)
+    plot_graph(plot_points_og)
+    # plot_points_adjusted = get_plot_points_adjusted(num)
+    # plot_graph(plot_points_og, plot_points_adjusted)
 
     # num2 = 2096
     # plot_points_og = get_plot_points(num2)

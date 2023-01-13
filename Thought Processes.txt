@@ -1,6 +1,6 @@
 Paul McCafferty
 1/11/2023
-v4.3
+v4.4
 
 Collatz Conjecture is a graphing problem (https://www.scirp.org/journal/paperinformation.aspx?paperid=109243#return4).
 This problem analyzes a pattern based off only positive integers.
@@ -9,10 +9,11 @@ The premise is that all graphs following this pattern eventually come back to 1.
 
 
 Preface (some definitions):
-1) We will refer to the calculation for odd, positive integers as EQO, where EQO = 3 * x + 1.
-2) We will refer to the calculation for even, positive integers as EQE, where EQE = x / 2.
-3) We will refer to a positive, odd integer (N >= 1 && N % 2 == 1) as POI.
-4) We will refer to a positive, even integer (N >= 2 && N % 2 == 0) as PEI.
+1) We will be using x and N as variables interchangeably for the most part. Some situations N is completely separate from x.
+2) We will refer to the calculation for odd, positive integers as EQO, where EQO = 3 * x + 1.
+3) We will refer to the calculation for even, positive integers as EQE, where EQE = x / 2.
+4) We will refer to a positive, odd integer (N >= 1 && N % 2 == 1) as POI.
+5) We will refer to a positive, even integer (N >= 2 && N % 2 == 0) as PEI.
 
 
 Base Theorems (questionably):
@@ -63,6 +64,21 @@ Using the 20 number grouping, let's look at group (C4) from above: 286, 412, 518
 To summarize, for every 20 numbers (20-group, which will be referred to as 20G), there is a 50% chance that we get
 a POI, use the EQO and end up with an even number. With an even number, there is a 50% it will result in an even.
 If it results in an odd, we use EQO, but then are guaranteed to use EQE next for another 50-50 of an odd or even.
+
+
+As an observable fact, we know that every POI will result in a PEI, which has a 50% (as in 1/2) of resulting in either
+a POI or another PEI. So we have a base of two routes:
+POI -> PEI -> 50/50 POI or PEI
+
+Based on the above observable fact, there is a 100% chance a POI will lead to a PEI, which will have EQE done on it.
+This means that every POI will only ever have roughly a 152% increase. Every PEI has a 50% (that is a 1/2) chance of
+next resulting in either a POI or PEI, but decrements the current PEI by 50%. If it was a true 50-50 split, then we would
+be getting an equal occurrence of both POI and PEI, as well as constantly be increasing, not approaching the constant
+value of 1.
+
+We know that certain PEI's, that is power's of 2, will always result in going to constant value of 1 (refer to P2F).
+We will only ever encounter a P2F number for x when that number is either the starting value fed into Collatz Conjecture,
+or we encounter an odd number that leads to it (refer to P4R).
 
 
 Observation: Since we know every POI will result in a PEI, which we will use EQE on, we can make the following statement:
