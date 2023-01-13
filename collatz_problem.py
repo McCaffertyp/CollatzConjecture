@@ -5,12 +5,12 @@ from typing import List
 import helpers
 import logger
 
-# Crandall Conjecture problem is a graphing problem.
+# Collatz problem is a graphing problem.
 # This problem analyzes a pattern based off only positive integers.
 # For odd positive integers: 3x + 1, and for even positive integers: x / 2.
 # The premise is that all graphs following this pattern eventually come back to 1.
 
-TAG = "crandall_conjecture"
+TAG = "collatz_problem"
 
 # Don't forget that the base CC_ODD_PERC_CHANGE also adds 1 after the increase.
 CC_ODD_PERC_CHANGE = 3.00
@@ -82,13 +82,13 @@ def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
 
     HarryPlotter.xlabel("Plot Increment")
     HarryPlotter.ylabel("Plot Points")
-    HarryPlotter.title("Crandall Conjecture Graphing")
+    HarryPlotter.title("Collatz problem Graphing")
     HarryPlotter.show()
 
 
 def run():
     logger.d(TAG, "=================================================")
-    logger.d(TAG, "Starting program for Crandall Conjecture analysis")
+    logger.d(TAG, "Starting program for Collatz problem analysis")
     logger.d(TAG, "=================================================")
 
     # int_start = 1
@@ -102,7 +102,7 @@ def run():
     #
     # print(f2p_nums)
 
-    num = helpers.get_ran_num(100, 1000000)
+    num = helpers.get_ran_num(100, 100000)
     logger.d(TAG, "num = {0}".format(num))
     # num = 5592405
     plot_points_og = get_plot_points(num)
