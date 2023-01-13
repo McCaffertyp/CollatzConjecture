@@ -1,7 +1,7 @@
-# Collatz Problem Analysis
+# Collatz Conjecture Analysis
 ## by Paul McCafferty
-### v3.1
-Happening across a TikTok that explained the situation of Collatz problem and it being unsolved,
+### v3.2
+Happening across a TikTok that explained the situation of Collatz Conjecture and it being unsolved,
 Paul took an immediate liking to the mathematical problem and decided to check it out.
 
 ## Preface
@@ -64,7 +64,7 @@ If it results in an odd, we use EQO, but then are guaranteed to use EQE next for
 All POI will have their two-step value result in the combination of EQO and EQE, thus EQO can have a sibling equation,
 which will henceforth be EQOA = (3 * x + 1) / 2. EQE shall remain the same of EQE = x / 2
 
-2) Since the current Collatz problem always converges on 1, and that's gotten to by dividing by 2, we know
+2) Since the current Collatz Conjecture always converges on 1, and that's gotten to by dividing by 2, we know
 that the previous number before 1 was 2 since 2 / 2 = 1. We also know that 3 * 1 + 1 = 4, which is a PEI and would have
 EQE performed on it. Due to this, we have the "4 Loop" which will be referred to as 4L. We can backtrack from
 1 to 2 to 4 to etc... These are all powers of 2. Thus, we are now also brought to the conclusion that once a power

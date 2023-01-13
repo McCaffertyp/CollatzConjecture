@@ -5,12 +5,12 @@ from typing import List
 import helpers
 import logger
 
-# Collatz problem is a graphing problem.
+# Collatz Conjecture problem is a graphing problem.
 # This problem analyzes a pattern based off only positive integers.
 # For odd positive integers: 3x + 1, and for even positive integers: x / 2.
 # The premise is that all graphs following this pattern eventually come back to 1.
 
-TAG = "collatz_problem"
+TAG = "collatz_conjecture"
 
 # Don't forget that the base CC_ODD_PERC_CHANGE also adds 1 after the increase.
 CC_ODD_PERC_CHANGE = 3.00
@@ -82,13 +82,13 @@ def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
 
     HarryPlotter.xlabel("Plot Increment")
     HarryPlotter.ylabel("Plot Points")
-    HarryPlotter.title("Collatz problem Graphing")
+    HarryPlotter.title("Collatz Conjecture Graphing")
     HarryPlotter.show()
 
 
 def run():
     logger.d(TAG, "=================================================")
-    logger.d(TAG, "Starting program for Collatz problem analysis")
+    logger.d(TAG, "Starting program for Collatz Conjecture problem analysis")
     logger.d(TAG, "=================================================")
 
     # int_start = 1
