@@ -67,7 +67,6 @@ def get_plot_points_adjusted(x: int) -> List[int]:
 
 
 def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
-    max_point = max(max(plot_points), max(plot_points_adjusted))
     plot_point_count_increment = [i for i in range(1, (len(plot_points) + 1))]
     HarryPlotter.plot(
         plot_point_count_increment, plot_points, color="blue", linestyle="--",
@@ -79,6 +78,7 @@ def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
         HarryPlotter.text(x_loc, y_loc, "{0}".format(y_loc))
 
     if plot_points_adjusted is not None:
+        max_point = max(max(plot_points), max(plot_points_adjusted))
         plot_points_adjusted_count_increment = [i for i in range(1, (len(plot_points_adjusted) + 1))]
         HarryPlotter.plot(
             plot_points_adjusted_count_increment, plot_points_adjusted, color="orange", linestyle="--",
@@ -112,7 +112,7 @@ def run():
     # print(f2p_nums)
 
     # Simple number to test with: 136
-    num = helpers.get_ran_num(100, 1000)
+    num = helpers.get_ran_num(7, 100)
     logger.d(TAG, "num = {0}".format(num))
     # num = 5592405
     plot_points_og = get_plot_points(num)
