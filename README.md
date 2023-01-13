@@ -1,33 +1,29 @@
-Paul McCafferty
-1/11/2023
-v1.1
+# Crandall Conjecture Analysis
+## by Paul McCafferty
+### v2.1
+Happening across a TikTok that explained the situation of Crandall Conjecture and it being unsolved,
+Paul took an immediate liking to the mathematical problem and decided to check it out.
 
-Crandall Conjecture problem is a graphing problem.
-This problem analyzes a pattern based off only positive integers.
-For odd, positive integers: 3 * x + 1 (Written as 3x + 1 for the docs), and for even, positive integers: x / 2.
-The premise is that all graphs following this pattern eventually come back to 1.
-
-
-Preface (some definitions):
+## Preface
 1) We will refer to the calculation for odd, positive integers as EQO, where EQO = 3 * x + 1.
 2) We will refer to the calculation for even, positive integers as EQE, where EQE = x / 2.
 3) We will refer to a positive, odd integer (N >= 1 && N % 2 == 1) as POI.
 4) We will refer to a positive, even integer (N >= 2 && N % 2 == 0) as PEI.
 
+## Questionable Theorems
+A) We know that any odd number multiplied by an odd number will be odd ([Link of Proof](https://www.splashlearn.com/math-vocabulary/number-sense/even-and-odd-numbers)).<br />
+B) We know that any even number divided by 2 may be either even or odd, as we are strictly working with integers.<br />
+C) Based on (A), we know that anytime we get a POI, the result will be (B) (We _will_ do EQE).<br />
+D) Based on (B), we know that anytime we get a PEI, the result may be either (A) or (B).<br />
+E) If log<sub>2</sub>(n) is an integer, then n is a power of 2.<br />
 
-Base Theorems (questionably):
-A) We know that any odd number multiplied by an odd number will be odd (link proof - https://www.splashlearn.com/math-vocabulary/number-sense/even-and-odd-numbers).
-B) We know that any even number divided by 2 may be either even or odd, as we are strictly working with integers.
-C) Based on (A), we know that anytime we get a POI, the result will be (B) (We _will_ do EQE).
-D) Based on (B), we know that anytime we get a PEI, the result may be either (A) or (B).
-E) If log(sub2)(n) is an integer, then n is a power of 2.
-
-
+### Loosely a Fundamental Statement from the Above
 A fundamental statement that could be made, that would be that due to the "recursive waterfall" nature we can
 observe above with conditions A-D, is the following:
 "Should the number be odd, we are guaranteed to do an even calculation (which decreases the number's value).
 Should the number be even, we are _not_ guaranteed to do an odd calculation (which increases the number's value)"
 
+## Visual Tests (Sub-Point for 20-Group Theorem)
 C1) Looking at the following even numbers:
 2, 4, 6, 8, 10
 if we divide 2 by 2, we get 1 (odd), 4 / 2 = 2 (even), 6 / 2 = 3 (odd), 8 / 2 = 4 (even), 10 / 2 = 5 (odd).
@@ -59,29 +55,28 @@ Using the 20 number grouping, let's look at group (C4) from above: 286, 412, 518
 734 can be split into 700, 20, and 14. 700 is a 20 group, so we can ignore, 20 is a 20 group, so we can ignore, 14 / 2 = 7, which is odd.
 804 can be split into 800 and 4. 800 is a 20 group, so we can ignore. 4 / 2 = 2, which is even.
 
-
 To summarize, for every 20 numbers (20-group, which will be referred to as 20G), there is a 50% chance that we get
 a POI, use the EQO and end up with an even number. With an even number, there is a 50% it will result in an even.
 If it results in an odd, we use EQO, but then are guaranteed to use EQE next for another 50-50 of an odd or even.
 
-
-Observation: Since we know every POI will result in a PEI, which we will use EQE on, we can make the following statement:
+## Observations
+1) Since we know every POI will result in a PEI, which we will use EQE on, we can make the following statement:
 All POI will have their two-step value result in the combination of EQO and EQE, thus EQO can have a sibling equation,
 which will henceforth be EQOA = (3 * x + 1) / 2. EQE shall remain the same of EQE = x / 2
 
-
-Observation: Since the current Crandall Conjecture always converges on 1, and that's gotten to by dividing by 2, we know
+2) Since the current Crandall Conjecture always converges on 1, and that's gotten to by dividing by 2, we know
 that the previous number before 1 was 2 since 2 / 2 = 1. We also know that 3 * 1 + 1 = 4, which is a PEI and would have
 EQE performed on it. Due to this, we have the "4 Loop" which will be referred to as 4L. We can backtrack from
 1 to 2 to 4 to etc... These are all powers of 2. Thus, we are now also brought to the conclusion that once a power
 of 2 is hit in the equation process with EQO, we have met the condition to get into the 4L.
 Let us call this the "Power of 2 Fall" which will be referred to as P2F.
 
-Some odd numbers which lead to the P2F: 5, 21, 85
+3) Some odd numbers which lead to the P2F: 1, 5, 21, 85, 341, 1365, 5461, 21845, 87381, 349525, 1398101, 5592405<br />
+For the directly above numbers which lead to a P2F, they're all the powers of 4 away from each other.
+5 - 1 = 4, 21 - 5 = 16, 85 - 21 = 64, 341 - 85 = 256, etc.
+Let us call this the "Power of 4 Rule" which will be referred to as P4R.
 
-
-
-Glossary:
+## Glossary
 1) EQO = (3 * x + 1)
 2) EQOA = ((3 * x + 1) / 2)
 3) EQE = (x / 2)
@@ -90,3 +85,4 @@ Glossary:
 6) 20G = ((N >= 1 && N <= 20) && N % 2 == 0)
 7) 4L = if (N == 4), we will end up in a 4, 2, 1, 4, 2, 1, etc. loop.
 8) P2F = if (2^N), we will end up in 4L.
+9) P4R = all odd numbers which lead to P2F will be some power of 4 away from another P4R number.

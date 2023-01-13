@@ -3,22 +3,33 @@ import matplotlib.pyplot as HarryPlotter
 from typing import List
 
 import helpers
+import logger
 
 # Crandall Conjecture problem is a graphing problem.
 # This problem analyzes a pattern based off only positive integers.
 # For odd positive integers: 3x + 1, and for even positive integers: x / 2.
 # The premise is that all graphs following this pattern eventually come back to 1.
 
+TAG = "crandall_conjecture"
+
+# Don't forget that the base CC_ODD_PERC_CHANGE also adds 1 after the increase.
+CC_ODD_PERC_CHANGE = 3.00
+CC_ODD_ADJ_PERC_CHANGE = 1.523809523809524
+CC_EVEN_PERC_CHANGE = 0.5
+
 
 def cc_odd_func(x: int) -> int:
+    # This increases value x by 300% and adds a constant N, where N = 1.
     return (3 * x) + 1
 
 
 def cc_odd_func_adjusted(x: int) -> int:
+    # This increases value x by ~152.3809523809524%
     return int(((3 * x) + 1) / 2)
 
 
 def cc_even_func(x: int) -> int:
+    # This decreases value x by 50.00%
     return int(x / 2)
 
 
@@ -47,6 +58,7 @@ def get_plot_points_adjusted(x: int) -> List[int]:
 
 
 def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
+    max_point = max(max(plot_points), max(plot_points_adjusted))
     plot_point_count_increment = [i for i in range(1, (len(plot_points) + 1))]
     HarryPlotter.plot(
         plot_point_count_increment, plot_points, color="blue", linestyle="--",
@@ -66,7 +78,7 @@ def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
         for i in range(0, len(plot_points_adjusted)):
             x_loc = plot_point_count_increment[i]
             y_loc = plot_points_adjusted[i]
-            HarryPlotter.text(x_loc, y_loc, "{0}".format(y_loc))
+            HarryPlotter.text(x_loc, (y_loc - (max_point * 0.02)), "{0}".format(y_loc))
 
     HarryPlotter.xlabel("Plot Increment")
     HarryPlotter.ylabel("Plot Points")
@@ -75,25 +87,27 @@ def plot_graph(plot_points: List[int], plot_points_adjusted: List[int] = None):
 
 
 def run():
-    print("=================================================")
-    print("Starting program for Crandall Conjecture analysis")
-    print("=================================================")
+    logger.d(TAG, "=================================================")
+    logger.d(TAG, "Starting program for Crandall Conjecture analysis")
+    logger.d(TAG, "=================================================")
 
-    int_start = 1
-    int_end = sys.maxsize
-    # int_end = 5000
-    # int_start = int_end - 1
-    f2p_nums = []
-    for i in range(int_start, int_end):
-        if helpers.is_p2f(i):
-            f2p_nums.append(i)
+    # int_start = 1
+    # int_end = sys.maxsize
+    # int_end = 10000000
+    # # int_start = int_end - 1
+    # f2p_nums = []
+    # for i in range(int_start, int_end):
+    #     if helpers.is_p2f(i):
+    #         f2p_nums.append(i)
+    #
+    # print(f2p_nums)
 
-    print(f2p_nums)
-
-    # num = 85
-    # plot_points_og = get_plot_points(num)
-    # plot_points_adjusted = get_plot_points_adjusted(num)
-    # plot_graph(plot_points_og, plot_points_adjusted)
+    num = helpers.get_ran_num(100, 1000000)
+    logger.d(TAG, "num = {0}".format(num))
+    # num = 5592405
+    plot_points_og = get_plot_points(num)
+    plot_points_adjusted = get_plot_points_adjusted(num)
+    plot_graph(plot_points_og, plot_points_adjusted)
 
     # num2 = 2096
     # plot_points_og = get_plot_points(num2)
