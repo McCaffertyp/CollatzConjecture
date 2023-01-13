@@ -1,6 +1,6 @@
 # Collatz Conjecture Analysis
 ## by Paul McCafferty
-### v3.3
+### v4.3
 Happening across a TikTok that explained the situation of Collatz Conjecture and it being unsolved,
 Paul took an immediate liking to the mathematical problem and decided to check it out.
 
@@ -96,3 +96,4 @@ Let us call this the "Power of 4 Rule" which will be referred to as P4R.
 ## Other
 ### Interesting Numbers to Run Through Program
 1) 96667
+2) 78360

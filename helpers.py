@@ -2,6 +2,9 @@ import datetime
 import math
 import random
 
+TWENTY_GROUP_ODDS = [2, 6, 10, 14, 18]
+TWENTY_GROUP_EVENS = [4, 8, 12, 16, 20]
+
 
 def is_even(x: int) -> bool:
     return x % 2 == 0
@@ -9,6 +12,14 @@ def is_even(x: int) -> bool:
 
 def is_odd(x: int) -> bool:
     return x % 2 == 1
+
+
+def get_20g_num(x: int) -> int:
+    num = x % 20
+    if num == 0:
+        return 20
+    else:
+        return num
 
 
 def is_power_of_2(x: int) -> bool:

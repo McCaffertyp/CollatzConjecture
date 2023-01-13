@@ -1,6 +1,6 @@
 Paul McCafferty
 1/11/2023
-v3.3
+v4.3
 
 Collatz Conjecture is a graphing problem (https://www.scirp.org/journal/paperinformation.aspx?paperid=109243#return4).
 This problem analyzes a pattern based off only positive integers.
@@ -100,3 +100,4 @@ Glossary:
 Other:
 Interesting numbers to run with:
 96667
+78360

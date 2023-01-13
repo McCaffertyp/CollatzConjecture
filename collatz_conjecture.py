@@ -33,6 +33,14 @@ def cc_even_func(x: int) -> int:
     return int(x / 2)
 
 
+def cc_even_func_adjusted(x: int) -> int:
+    twenty_group = helpers.get_20g_num(x)
+    if twenty_group in helpers.TWENTY_GROUP_EVENS:
+        return cc_even_func_adjusted(cc_even_func(x))
+    else:
+        return cc_even_func(x)
+
+
 def get_plot_points(x: int) -> List[int]:
     plot_points: List[int] = [x]
     while x > 1:
@@ -51,7 +59,7 @@ def get_plot_points_adjusted(x: int) -> List[int]:
         if helpers.is_odd(x):
             x = cc_odd_func_adjusted(x)
         else:
-            x = cc_even_func(x)
+            x = cc_even_func_adjusted(x)
         plot_points.append(x)
     # print("For original value = {0}, value_storage = {1}".format(og_x, plot_points))
     return plot_points
@@ -102,7 +110,8 @@ def run():
     #
     # print(f2p_nums)
 
-    num = helpers.get_ran_num(100, 100000)
+    # Simple number to test with: 136
+    num = helpers.get_ran_num(100, 1000)
     logger.d(TAG, "num = {0}".format(num))
     # num = 5592405
     plot_points_og = get_plot_points(num)
