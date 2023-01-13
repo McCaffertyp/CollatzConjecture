@@ -1,8 +1,8 @@
 Paul McCafferty
 1/11/2023
-v3.2
+v3.3
 
-Collatz Conjecture is a graphing problem.
+Collatz Conjecture is a graphing problem (https://www.scirp.org/journal/paperinformation.aspx?paperid=109243#return4).
 This problem analyzes a pattern based off only positive integers.
 For odd, positive integers: 3 * x + 1 (Written as 3x + 1 for the docs), and for even, positive integers: x / 2.
 The premise is that all graphs following this pattern eventually come back to 1.

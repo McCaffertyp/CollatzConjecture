@@ -1,8 +1,14 @@
 # Collatz Conjecture Analysis
 ## by Paul McCafferty
-### v3.2
+### v3.3
 Happening across a TikTok that explained the situation of Collatz Conjecture and it being unsolved,
 Paul took an immediate liking to the mathematical problem and decided to check it out.
+
+## Description
+Collatz Conjecture is a graphing problem: [Link to Online Description](https://www.scirp.org/journal/paperinformation.aspx?paperid=109243#return4).
+This problem analyzes a pattern based off only positive integers.
+For odd, positive integers: 3 * x + 1 (Written as 3x + 1 for the docs), and for even, positive integers: x / 2.
+The premise is that all graphs following this pattern eventually come back to 1.
 
 ## Preface
 1) We will refer to the calculation for odd, positive integers as EQO, where EQO = 3 * x + 1.
