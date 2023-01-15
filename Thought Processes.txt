@@ -1,6 +1,6 @@
 Paul McCafferty
 1/11/2023
-v4.4
+v4.5
 
 Collatz Conjecture is a graphing problem (https://www.scirp.org/journal/paperinformation.aspx?paperid=109243#return4).
 This problem analyzes a pattern based off only positive integers.
@@ -81,6 +81,33 @@ We will only ever encounter a P2F number for x when that number is either the st
 or we encounter an odd number that leads to it (refer to P4R).
 
 
+Taking a look at single digit numbers and running any of those through Collatz Conjecture will lead back to 1 (which
+is part of what needs proven still since we currently understand all positive integers will lead to 1). Looking at them
+in a slightly different manner, just numbers >= 1 and <= 9, we know that 1, 2, 4 and 8 will lead to 1. 1, 2 and 4 are
+part of the 4-Loop that has a proof/mathematical acknowledgement in the Collatz Conjecture write up already. We also know
+that all powers of 2 will lead back to 1 (refer to P2F). So 1, 2, 4 and 8 we know will end up at 1.
+
+Moving on to 3, 5, 6, 7 and 9 then. 6 divided by 2 is equal to 3, so we can ignore 6 momentarily. This leaves us with
+3, 5, 7 and 9. Using the EQO, 5 becomes 16, which is a power of 2, meaning this will lead back to 1 using P2F. Using
+the EQO, 3 becomes 10, use EQE, and we're at 5 now, which referring to the previous calculation we know will result in
+a P2F, thus go to 1. 7 and 9 are slightly more interesting, where 7 follows: 7 -> 22 -> 11 -> 34 -> 17 -> 52 -> 26 -> 13
+-> 40 -> 20 -> 10 -> 5 -> 16 (P2F). 9 follows: 9 -> 28 -> 14 -> 7, and now follow the 7 path.
+
+A base summary that can be made looking at any numbers above that lead to a single digit (7, 14, 28, 56 or 3, 6, 12, 24)
+is this new equation I'd like to add for single digits: k + 2^N where (k >= 1 && k <= 9) will lead to a single digit (and
+thus to 1).
+
+There is still another portion that needs taken care of, which would be prime numbers. A loose statement on prime numbers
+That I would make is that most prime numbers will have other prime numbers in their iteration pathing. Further research
+needed for this.
+
+
+Based on the info currently, I believe that there is an order to which things need proved and can be broken down into:
+1) Prove that prime numbers will eventually lead to a single digit.
+2) Prove that single digits will always lead to 1 (prove P2SD).
+3) (Not thought about much yet) Prove that every number will always lead to a prime number, P2F number, or a P2SD number.
+
+
 Observation: Since we know every POI will result in a PEI, which we will use EQE on, we can make the following statement:
 All POI will have their two-step value result in the combination of EQO and EQE, thus EQO can have a sibling equation,
 which will henceforth be EQOA = (3 * x + 1) / 2. EQE shall remain the same of EQE = x / 2
@@ -110,6 +137,7 @@ Glossary:
 7) 4L = if (N == 4), we will end up in a 4, 2, 1, 4, 2, 1, etc. loop.
 8) P2F = if (2^N), we will end up in 4L.
 9) P4R = all odd numbers which lead to P2F will be some power of 4 away from another P4R number.
+10) P2SD = k + 2^N where (k >= 1 && k <= 9) will lead to a single digit
 
 
 
